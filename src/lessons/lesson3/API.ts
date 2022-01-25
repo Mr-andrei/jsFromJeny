@@ -16,6 +16,7 @@ const API = {
        return  axiosInstance.get(``,{params:{t:title}})
     },
     searchFilmsByType: (title: string, type: string) => {
+        return  axiosInstance.get(``,{params:{t:title ,type:type}})
     }
 };
 
