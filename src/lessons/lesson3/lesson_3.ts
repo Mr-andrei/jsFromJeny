@@ -17,4 +17,6 @@ console.log('lesson 3');
 
 
 // just a plug
-export default ()=>{};
+export default fetch('https://jsonplaceholder.typicode.com/posts/1')
+    .then((response) => response.json())
+    .then((json) => console.log(json));

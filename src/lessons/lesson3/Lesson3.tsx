@@ -11,7 +11,9 @@ const Lesson3 = () => {
     const [serachResultByType, setSerachResultByType] = useState('');
 
     const searchFilm = () => {
+        debugger
         API.searchFilmsByTitle(searchName)
+
             .then(data => {
                 setSerachResult(data.data.Actors)
                 setImages(data.data.Poster)
@@ -27,9 +29,7 @@ const Lesson3 = () => {
                 setSerachResultByType(data.data.Title)
                 setSerachResult(data.data.Actors)
                 setImages(data.data.Poster)
-
             }
-
         )
     }
 

@@ -14,9 +14,10 @@ const axiosInstance = axios.create(configOMB);
 const API = {
     searchFilmsByTitle: (title: string) => {
        return  axiosInstance.get(``,{params:{t:title}})
+
     },
     searchFilmsByType: (title: string, type: string) => {
-        return  axiosInstance.get(``,{params:{t:title ,type:type}})
+        return  axios.get(`http://www.omdbapi.com?apikey=${key}&t=${title}&type=${type}`)
     }
 };
 
