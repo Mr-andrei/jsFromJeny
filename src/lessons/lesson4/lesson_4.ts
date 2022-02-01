@@ -1,4 +1,5 @@
 import {log} from "util";
+import {rejects} from "assert";
 
 console.log('lesson 4');
 
@@ -85,19 +86,39 @@ console.log('lesson 4');
 
 
 //
-// let prom = new Promise((res,rej) => {
+// new Promise((res,rej) => {
 //     setTimeout((resolve:string)=> {
-//         res(resolve)
+//       return  res(resolve)
 //     },1000, "My name is ")
+// }).then( (data) => {
+//     onSuccess(data)
+//     return data
+// }).then( data => {
+//     print(data)
 // })
 //
-//
-// function onSuccess (param:any) {
-//  return  param.then( (data:any) => {
-//      console.log( data + "Andrei" )})
+// function print (param:any) {
+//     console.log(param)
 // }
-//  onSuccess(prom)
-//
+// function onSuccess (param:any) {
+//  console.log( param + "Andrei" )
+// }
+
+
+// async function numSum  (num:number) {
+//     let prom =  new Promise((res, rej) => {
+//         if (num > 5) {
+//             res(num+1)
+//         }
+//         else rej (num-1)
+//     })
+//      let a = await prom
+//     console.log(a)
+//     return a
+// }
+// console.log( numSum(10))
+
+
 
 // Task 7
 // Создайте три промиса. Первый промис возвращает объект { name: "Anna" } через 2с,
@@ -105,51 +126,32 @@ console.log('lesson 4');
 // Получите результаты работы промисов, объедините свойства объектов
 // и выведите в консоль {name, age, city}
 
-let obj: any = {}
-// const fn1 =  () => {
-//     return new Promise(resolve => {
-//     setTimeout((arg)=>{
-//         resolve(arg)
-//     },1000, { name: "Anna" })
-// })}
 
+const prom1 = new Promise(resolve => {
+    setTimeout((arg)=>{
+        resolve(arg)
+    },1000, { name: "Anna" })
+})
 
-// const prom2 = new Promise(resolve => {
-//     setTimeout((arg)=>{
-//         resolve(arg)
-//     },2000, {age: 16})
-// })
-// const prom3 = new Promise(resolve => {
-//     setTimeout((arg)=>{
-//         resolve(arg)
-//     },3000, {city: ''})
-// })
-//
+const prom2 = new Promise(resolve => {
+    setTimeout((arg)=>{
+        resolve(arg)
+    },2000, {age: 16})
+})
+const prom3 = new Promise(resolve => {
+    setTimeout((arg)=>{
+        resolve(arg)
+    },3000, {city: 'Gomel'})
+})
 
-//
-async function func1(num: number) {
-    let promise = new Promise((resolve, reject) => {
-        setTimeout(() => resolve(num), 1000)
-    });
+async function someFn () {
+    let prom1_1:any = await prom1
+    let prom2_2:any = await prom2
+    let prom3_3:any = await prom3
 
-    let result = await promise
-    return result
+    console.log({name:prom1_1.name,age:prom2_2.age,city:prom3_3.city  } )
 }
-
-let a = func1(6)
-console.log(a)
-
-// async function f() {
-//
-//     let promise = new Promise((resolve, reject) => {
-//         setTimeout(() => resolve("готово!"), 1000)
-//     });
-//
-//     let result = await promise; // будет ждать, пока промис не выполнится (*)
-//
-//     alert(result); // "готово!"
-// }
-// f()
+someFn ()
 
 // just a plug
 export default () => {
