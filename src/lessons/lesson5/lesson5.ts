@@ -1,3 +1,5 @@
+import {log} from "util";
+
 console.log('Lesson 5');
 
 // Keyword - this
@@ -28,6 +30,7 @@ console.log('Lesson 5');
 type someObjType = {
     name: string;
     age: number;
+
 }
 
 let someObj:someObjType = {
@@ -35,6 +38,14 @@ let someObj:someObjType = {
     age: 32
 }
 
+function greeting (){
+    // @ts-ignore
+    console.log(`My name is ${this.name}. I am ${this.age}`)
+}
+// @ts-ignore
+someObj.greeting = greeting
+// @ts-ignore
+someObj.greeting()
 // Task 02
 // реализовать счетчик counter в виде объекта со следующими методами:
 // get current count; - выводит текущее значение счетчика
@@ -43,19 +54,78 @@ let someObj:someObjType = {
 // set current count; - принимает и присваивает значение счетчику
 // rest current count - устанавливает значение счетчика равным 0
 // все методы должны ссылаться на сам объект
+//
+// let counter = {
+//     count : 0,
+//     getCurrentCount (){
+//         console.log(this.count)
+//     },
+//     increment() {
+//         return  this.count + 1
+//     },
+//     decrement(){
+//         return  this.count - 1
+//     },
+//     setCurrentCount (value) {
+//         this.count = value
+//     },
+//     restCurrentCount () {
+//         this.count = 0
+//     }
+// }
+// counter.setCurrentCount(counter.increment())
+// counter.getCurrentCount()
+// counter.restCurrentCount()
+// counter.getCurrentCount()
+
+
+
+
 
 // Task 03
 // переделайте код из Task 02, что бы сработал следующий код:
 // counter.setCurrentCount(10).increment().increment().increment().decrement().getCurrentCount() // 12
+// let counter = {
+//     count : 0,
+//     getCurrentCount (){
+//         console.log(this.count)
+//     },
+//     increment() {
+//         ++this.count
+//         return  this
+//     },
+//     decrement(){
+//         --this.count
+//         return  this
+//     },
+//     setCurrentCount (value) {
+//         this.count = value
+//         return this
+//     },
+//     restCurrentCount () {
+//         this.count = 0
+//     }
+// }
+//
+// counter.setCurrentCount(10).increment().increment().increment().decrement().getCurrentCount()
 
 // Task 04
 // Написать функцию конструктор myFirstConstructorFunc которая принимает 2 параметра name и age и возвращает объект
 // у которого будут эти свойства и метод greeting из Task 01
+// function MyFirstConstructorFunc (name,age) {
+//     this.name=name
+//     this.age=age
+// }
+// let  fn = new MyFirstConstructorFunc("Andrei",25)
+// console.log(fn)
+
+
 
 // Task 05 есть 2 объекта One и Two. С помощью bind и метода sayHello заставьте поздороваться объект One
 
-let One = {name: 'One'};
-let Two = {name: 'Two', sayHello: function() {console.log(`Hello, my name is ${this.name}`)}};
+// let One = {name: 'One'};
+// let Two = {name: 'Two', sayHello: function() {console.log(`Hello, my name is ${this.name}`)}};
+// Two.sayHello.bind(One)()
 
 // Task 06
 // создайте объект helperObj у которого есть следующие методы:
@@ -63,7 +133,17 @@ let Two = {name: 'Two', sayHello: function() {console.log(`Hello, my name is ${t
 // setAge - устанавливает полученное значение в свойство age объекта
 // greeting - используется функция sayHello из Task 05
 // можно использовать @ts-ignore
-
+// let helperObj = {
+//     changeName(valueName){
+//         this.name = valueName
+//     },
+//     setAge (valueAge) {
+//         this.age = valueAge
+//     },
+//     greeting :
+//         function() {console.log(`Hello, my name is ${this.name}`)}
+//
+// }
 // Bind
 // 1) Дана функция sumTwoNumbers, реализовать функцию bindNumber которая принимает функцию sumTwoNumbers и число, и
 // возвращает другую функцию, которое также принимает число и возвращает сумму этих чисел. Замыкание использовать нельзя
