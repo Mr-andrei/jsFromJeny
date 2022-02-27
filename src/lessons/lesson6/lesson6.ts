@@ -12,6 +12,27 @@ console.log('Lesson 6');
 // Создать массив из десяти элементов такого типа, упорядочить записи по возрастанию среднего балла.
 // Добавить возможность вывода фамилий и номеров групп студентов, имеющих оценки, равные только 4 или 5.
 
+
+class students {
+    age: number
+    name: string
+    score: number[]
+
+    constructor(age: number, name: string, score: number[]) {
+        this.name = name
+        this.age = age
+        this.score = score
+    }
+}
+
+let obj = new students(20, 'kek',[4,5,5,4,4])
+let obj2 = new students(202, 'kek2',[1,3,3,2,1])
+let obj3 = new students(203, 'kek3',[1,4,3,2,3])
+let studentst:any = [obj,obj2,obj3].reduce
+
+console.log(studentst)
+
+
 // Task 02
 // Создать класс с двумя переменными. Добавить конструктор с входными параметрами и инициализирующий члены класса по умолчанию.
 // Можно ли создать метод на экземпляре класса который будет удалять сам экземпляр класса?

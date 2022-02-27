@@ -1,11 +1,17 @@
 // Task 1
 // Есть некоторая строка (const str = 'fgfggg';), что будет, если мы возьмем str[0]
-
+//   //(f)
 // Task 2
 // Реализуйте необходимый код, что бы выражение (2).plus(3).minus(1) сработало и вернуло 4
 
 // Task 3
 // Реализуйте функцию, которая принимает следующие аргументы (строки) '*', '1', 'b', '1c', и возвращает строку '1*b*1c'
+
+function someFn (...args) {
+	console.log(args.join(""))
+}
+
+someFn('*', '1', 'b', '1c')
 
 // Task 4
 // Напишите функцию которая найдет сумму всех вершин в структуре данны типа tree
@@ -44,31 +50,67 @@ const tree = {
 // Task 5
 // исправить код, что бы работал правильно
 
-for (var i = 0; i < 10; i++) {
-	setTimeout(function () {
-		console.log(i);
-	}, 100);
-}
+// for (var i = 0; i < 10; i++) {
+// 	setTimeout(function () {
+// 		console.log(i);
+// 	}, 100);
+// }
+//
+// for (let i = 0; i < 10; i++) {
+// 	setTimeout(function () {
+// 		console.log(i);
+// 	}, 100);
+// }
 
 // Task 6
 // Реализуйте функцию Foo, что бы все корректно работало
 
-function Book(name, author) {
-	this.name = name;
-	this.author = author;
-	return this;
-}
-
-// function Foo(Book, 'Учебник javascript', 'Петр Сергеев')
+// function Book(name, author) {
+// 	this.name = name;
+// 	this.author = author;
+// 	return this;
+// }
+//
+// function Foo( 'Учебник javascript', 'Петр Сергеев')
 //
 // var book = Foo(Book, 'js', 'petr');
 // console.log(book.name);
 
 // Task 7
 // Реализовать функцию f: f(2, 3) -> 5, при вызове f(2)(3), тоже вернет 5
-
+// function somFn (a){
+// 	return function (b) {
+// 		return a+b
+// 	}
+// }
 // Task 8
 // Реализовать функцию f: f(1)(2)(3)() -> 6, f(0)(3)(1)(5)() -> 8
+
+// function somFn (a){
+//     return function (b) {
+//         return function (c){
+//            return function (){
+//               return  a+b+c
+//            }
+//         }
+//     }
+// }
+
+// console.log(somFn(1)(2)(3)())
+
+// function somFn (a){
+// 	return function (b) {
+// 		return function (c){
+// 			return function (d){
+// 				return  function (){
+// 					return b+d+(a/c)
+// 				}
+// 			}
+// 		}
+// 	}
+// }
+//
+// console.log(somFn(0)(3)(1)(5)())
 
 // Task 9
 // Реализовать функции seven, plus, one, five, minus, two так, что бы следующие вызовы работали seven(plus(one())) -> 8. five(minus(two())) -> 3
@@ -80,11 +122,25 @@ function Book(name, author) {
 // Есть строка, состоящая из разных скобок - str = "())({}}{()][][", написать функцию проверки закрыты ли все.
 
 // Task 12
-// Необходимо написать функцию, принимающую в аргументах массив целых чисел и возвращающую новый массив, состоящий только из уникальных значений первого массива.
+ // Необходимо написать функцию, принимающую в аргументах массив целых чисел и возвращающую новый массив, состоящий только из уникальных значений первого массива.
+// let arrr = [1, 2, 2, 1, 4, 5, 6, 7, 3, 4, 6, 7, 8, 4, 2, 4, 5, 6, 7, 8, 9]
+// function sortArr(arr) {
+// 	let newArr = {}
+//
+// 	arr.forEach(item => {
+// 		newArr[item] = item
+// 	})
+// 	return Object.keys(newArr)
+// }
+// console.log(sortArr(arrr))
 
 // Task 13
 // Написать функцию, принимающую аргументом массив чисел и возвращающую новый массив, состоящий из удвоенных значений первого.
 // f([1, 2, null, 7, 8, null, 3]); // => [2, 4, 14, 16, 6]
+
+// function someFn(arr) {
+// 	return arr.filter(f => f !== null).map(m => m * 2)
+// }
 
 // Task 14
 // Необходимо написать функцию, возвращающую значения всех вершин дерева
@@ -110,12 +166,27 @@ const tree2 = {
 	]
 };
 
+function getTreeValues(tree) {
+	let newArr = [...tree.value]
+	if(Array.isArray(tree.children)){
+
+	}
+}
+
 // Task 15
 // Необходимо написать функцию, возвращающую сумму всех вершин дерева из Task 14
 
 // Task 16
 // Надо реализовать «бомбу» (в виде функции-конструктора), которая получает на входе время, через которое взорвется и
 // некоторый «звук взрыва» (строку, которую вернет через заданное время).
+
+function BombFunction( time ){
+   return setTimeout(()=>{
+	   return 'звук взрыва'
+   },time)
+}
+
+
 
 // Task 17
 // Необходимо реализовать функцию, принимающую в аргументах строку, состоящую из букв и вернуть новую строку,
